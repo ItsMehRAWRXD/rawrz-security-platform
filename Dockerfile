@@ -42,12 +42,12 @@ RUN chown -R rawrz:nodejs /app
 # Switch to non-root user
 USER rawrz
 
-# Expose port (if needed for web interface)
-EXPOSE 3000
+# Expose port for web application
+EXPOSE 8080
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-    CMD node rawrz-standalone.js sysinfo || exit 1
+    CMD curl -f http://localhost:8080/api/health || exit 1
 
-# Default command
-CMD ["node", "rawrz-standalone.js", "help"]
+# Default command - start web server
+CMD ["npm", "start"]

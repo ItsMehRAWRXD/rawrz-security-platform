@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RawrZ Security Platform - 110+ Security Features</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>RawrZ Security Platform</span>
+                    <span class="version">v2.0.0</span>
+                </div>
+                <div class="header-stats">
+                    <div class="stat">
+                        <span class="stat-number">110+</span>
+                        <span class="stat-label">Security Features</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="system-status">●</span>
+                        <span class="stat-label">System Status</span>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-outline" onclick="window.open('/panel', '_blank')">
+                        <i class="fas fa-cog"></i> Admin Panel
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav-tabs">
+            <button class="nav-tab active" data-tab="encryption">
+                <i class="fas fa-lock"></i> Encryption
+            </button>
+            <button class="nav-tab" data-tab="analysis">
+                <i class="fas fa-search"></i> Analysis
+            </button>
+            <button class="nav-tab" data-tab="network">
+                <i class="fas fa-network-wired"></i> Network
+            </button>
+            <button class="nav-tab" data-tab="encoding">
+                <i class="fas fa-code"></i> Encoding
+            </button>
+            <button class="nav-tab" data-tab="tools">
+                <i class="fas fa-tools"></i> Tools
+            </button>
+            <button class="nav-tab" data-tab="advanced">
+                <i class="fas fa-rocket"></i> Advanced
+            </button>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Encryption Tab -->
+            <div class="tab-content active" id="encryption-tab">
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-header">
+                            <i class="fas fa-lock"></i>
+                            <h3>File Encryption</h3>
+                        </div>
+                        <div class="feature-content">
+                            <div class="form-group">
+                                <label>Algorithm</label>
+                                <select id="encrypt-algorithm">
+                                    <option value="aes256">AES-256</option>
+                                    <option value="aes192">AES-192</option>
+                                    <option value="aes128">AES-128</option>
+                                    <option value="camellia256">Camellia-256</option>
+                                    <option value="aria256">ARIA-256</option>
+                                    <option value="chacha20">ChaCha20</option>
+                                    <option value="blowfish">Blowfish</option>
+                                    <option value="twofish">Twofish</option>
+                                    <option value="serpent">Serpent</option>
+                                    <option value="rsa4096">RSA-4096</option>
+                                    <option value="hybrid">Hybrid</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>File</label>
+                                <input type="file" id="encrypt-file" accept="*/*">
+                            </div>
+                            <div class="form-group">
+                                <label>Extension</label>
+                                <select id="encrypt-extension">
+                                    <option value=".enc">.enc (Standard)</option>
+                                    <option value=".stub">.stub (Stub)</option>
+                                    <option value=".poly">.poly (Polymorphic)</option>
+                                    <option value=".anti">.anti (Anti-Analysis)</option>
+                                    <option value=".mutex">.mutex (Mutex)</option>
+                                    <option value=".upx">.upx (UPX)</option>
+                                    <option value=".packed">.packed (Packed)</option>
+                                    <option value=".hybrid">.hybrid (Hybrid)</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-primary" onclick="encryptFile()">
+                                <i class="fas fa-lock"></i> Encrypt File
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-header">
+                            <i class="fas fa-unlock"></i>
+                            <h3>Text Encryption</h3>
+                        </div>
+                        <div class="feature-content">
+                            <div class="form-group">
+                                <label>Algorithm</label>
+                                <select id="text-encrypt-algorithm">
+                                    <option value="aes256">AES-256</option>
+                                    <option value="chacha20">ChaCha20</option>
+                                    <option value="hybrid">Hybrid</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Text to Encrypt</label>
+                                <textarea id="encrypt-text" placeholder="Enter text to encrypt..."></textarea>
+                            </div>
+                            <button class="btn btn-primary" onclick="encryptText()">
+                                <i class="fas fa-lock"></i> Encrypt Text
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-header">
+                            <i class="fas fa-rocket"></i>
+                            <h3>Advanced Crypto</h3>
+                        </div>
+                        <div class="feature-content">
+                            <div class="form-group">
+                                <label>Operation</label>
+                                <select id="advanced-operation">
+                                    <option value="encrypt">Encrypt</option>
+                                    <option value="decrypt">Decrypt</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>File</label>
+                                <input type="file" id="advanced-file" accept="*/*">
+                            </div>
+                            <button class="btn btn-primary" onclick="advancedCrypto()">
+                                <i class="fas fa-rocket"></i> Advanced Crypto
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-header">
+                            <i class="fas fa-key"></i>
+                            <h3>Key Generation</h3>
+                        </div>
+                        <div class="feature-content">
+                            <div class="form-group">
+                                <label>Algorithm</label>
+                                <select id="keygen-algorithm">
+                                    <option value="aes256">AES-256</option>
+                                    <option value="rsa4096">RSA-4096</option>
+                                    <option value="chacha20">ChaCha20</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Key Length (bits)</label>
+                                <input type="number" id="keygen-length" value="256" min="128" max="4096">
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    <input type="checkbox" id="keygen-save" checked> Save to file
+                                </label>
+                            </div>
+                            <button class="btn btn-primary" onclick="generateKey()">
+                                <i class="fas fa-key"></i> Generate Key
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analysis Tab -->
+            <div class="tab-content" id="analysis-tab">
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-header">
+                            <i class="fas fa-file-alt"></i>
+                            <h3>File Analysis</h3>
+                        </div>
+                        <div class="feature-content">
+                            <div class="form-group">
+                                <label>File to Analyze</label>
+                                <input type="file" id="analyze-file" accept="*/*">
+                            </div>
+                            <button class="btn btn-primary" onclick="analyzeFile()">
+                                <i class="fas fa-search"></i> Analyze File
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-header">
+                            <i class="fas fa-hashtag"></i>
+                            <h3>Hash Generator</h3>
+                        </div>
+                        <div class="feature-content">
+                            <div class="form-group">
+                                <label>Algorithm</label>
+                                <select id="hash-algorithm">
+                                    <option value="sha256">SHA-256</option>
+                                    <option value="sha512">SHA-512</option>
+                                    <option value="md5">MD5</option>
+                                    <option value="sha1">SHA-1</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Input Method</label>
+                                <select id="hash-method" onchange="toggleHashInput()">
+                                    <option value="text">Text</option>
+                                    <option value="file">File</option>
+                                </select>
+                            </div>
+                            <div class="form-group" id="hash-text-group">
+                                <label>Text to Hash</label>
+                                <textarea id="hash-text" placeholder="Enter text to hash..."></textarea>
+                            </div>
+                            <div class="form-group" id="hash-file-group" style="display:none;">
+                                <label>File to Hash</label>
+                                <input type="file" id="hash-file" accept="*/*">
+                            </div>
+                            <button class="btn btn-primary" onclick="generateHash()">
+                                <i class="fas fa-hashtag"></i> Generate Hash
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-header">
+                            <i class="fas fa-desktop"></i>
+                            <h3>System Information</h3>
+                        </div>
+                        <div class="feature-content">
+                            <button class="btn btn-primary" onclick="getSystemInfo()">
+                                <i class="fas fa-info-circle"></i> Get System Info
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Network Tab -->
+            <div class="tab-content" id="network-tab">
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-header">
+                            <i class="fas fa-globe"></i>
+                            <h3>DNS Lookup</h3>
+                        </div>
+                        <div class="feature-content">
+                            <div class="form-group">
+                                <label>Hostname</label>
+                                <input type="text" id="dns-hostname" placeholder="example.com">
+                            </div>
+                            <button class="btn btn-primary" onclick="dnsLookup()">
+                                <i class="fas fa-search"></i> DNS Lookup
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-header">
+                            <i class="fas fa-satellite-dish"></i>
+                            <h3>Ping Test</h3>
+                        </div>
+                        <div class="feature-content">
+                            <div class="form-group">
+                                <label>Host</label>
+                                <input type="text" id="ping-host" placeholder="google.com">
+                            </div>
+                            <button class="btn btn-primary" onclick="pingHost()">
+                                <i class="fas fa-satellite-dish"></i> Ping Host
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Encoding Tab -->
+            <div class="tab-content" id="encoding-tab">
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-header">
+                            <i class="fas fa-code"></i>
+                            <h3>Text Encoding</h3>
+                        </div>
+                        <div class="feature-content">
+                            <div class="form-group">
+                                <label>Encoding Type</label>
+                                <select id="encoding-type">
+                                    <option value="base64">Base64</option>
+                                    <option value="hex">Hexadecimal</option>
+                                    <option value="url">URL Encoding</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Text to Encode</label>
+                                <textarea id="encoding-text" placeholder="Enter text to encode..."></textarea>
+                            </div>
+                            <button class="btn btn-primary" onclick="encodeText()">
+                                <i class="fas fa-code"></i> Encode Text
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-header">
+                            <i class="fas fa-spell-check"></i>
+                            <h3>Text Operations</h3>
+                        </div>
+                        <div class="feature-content">
+                            <div class="form-group">
+                                <label>Operation</label>
+                                <select id="textop-operation">
+                                    <option value="uppercase">Uppercase</option>
+                                    <option value="lowercase">Lowercase</option>
+                                    <option value="reverse">Reverse</option>
+                                    <option value="wordcount">Word Count</option>
+                                    <option value="charcount">Character Count</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Text</label>
+                                <textarea id="textop-text" placeholder="Enter text..."></textarea>
+                            </div>
+                            <button class="btn btn-primary" onclick="performTextOperation()">
+                                <i class="fas fa-spell-check"></i> Process Text
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-header">
+                            <i class="fas fa-check-circle"></i>
+                            <h3>Validation</h3>
+                        </div>
+                        <div class="feature-content">
+                            <div class="form-group">
+                                <label>Validation Type</label>
+                                <select id="validation-type">
+                                    <option value="email">Email</option>
+                                    <option value="url">URL</option>
+                                    <option value="ip">IP Address</option>
+                                    <option value="json">JSON</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Input to Validate</label>
+                                <input type="text" id="validation-input" placeholder="Enter input to validate...">
+                            </div>
+                            <button class="btn btn-primary" onclick="validateInput()">
+                                <i class="fas fa-check-circle"></i> Validate
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tools Tab -->
+            <div class="tab-content" id="tools-tab">
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-header">
+                            <i class="fas fa-random"></i>
+                            <h3>Random Generator</h3>
+                        </div>
+                        <div class="feature-content">
+                            <div class="form-group">
+                                <label>Type</label>
+                                <select id="random-type">
+                                    <option value="password">Password</option>
+                                    <option value="uuid">UUID</option>
+                                    <option value="random">Random Bytes</option>
+                                </select>
+                            </div>
+                            <div class="form-group" id="random-length-group">
+                                <label>Length</label>
+                                <input type="number" id="random-length" value="16" min="1" max="128">
+                            </div>
+                            <button class="btn btn-primary" onclick="generateRandom()">
+                                <i class="fas fa-random"></i> Generate
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-header">
+                            <i class="fas fa-calculator"></i>
+                            <h3>Math Calculator</h3>
+                        </div>
+                        <div class="feature-content">
+                            <div class="form-group">
+                                <label>Expression</label>
+                                <input type="text" id="math-expression" placeholder="2 + 2 * 3">
+                            </div>
+                            <button class="btn btn-primary" onclick="calculateMath()">
+                                <i class="fas fa-calculator"></i> Calculate
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-header">
+                            <i class="fas fa-folder"></i>
+                            <h3>File Manager</h3>
+                        </div>
+                        <div class="feature-content">
+                            <button class="btn btn-primary" onclick="listFiles()">
+                                <i class="fas fa-list"></i> List Files
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced Tab -->
+            <div class="tab-content" id="advanced-tab">
+                <div class="feature-grid">
+                    <div class="feature-card advanced-feature">
+                        <div class="feature-header">
+                            <i class="fas fa-shield-virus"></i>
+                            <h3>Anti-Analysis Engine</h3>
+                        </div>
+                        <div class="feature-content">
+                            <p>Advanced anti-analysis and obfuscation techniques</p>
+                            <div class="feature-tags">
+                                <span class="tag">Anti-Debug</span>
+                                <span class="tag">Anti-VM</span>
+                                <span class="tag">Anti-Sandbox</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feature-card advanced-feature">
+                        <div class="feature-header">
+                            <i class="fas fa-dna"></i>
+                            <h3>Polymorphic Engine</h3>
+                        </div>
+                        <div class="feature-content">
+                            <p>Code mutation and transformation capabilities</p>
+                            <div class="feature-tags">
+                                <span class="tag">Code Mutation</span>
+                                <span class="tag">Instruction Substitution</span>
+                                <span class="tag">Control Flow</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feature-card advanced-feature">
+                        <div class="feature-header">
+                            <i class="fas fa-cube"></i>
+                            <h3>Stub Generator</h3>
+                        </div>
+                        <div class="feature-content">
+                            <p>Advanced stub generation with multiple encryption methods</p>
+                            <div class="feature-tags">
+                                <span class="tag">Multi-Layer</span>
+                                <span class="tag">Assembly</span>
+                                <span class="tag">Memory Execution</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feature-card advanced-feature">
+                        <div class="feature-header">
+                            <i class="fas fa-eye-slash"></i>
+                            <h3>Stealth Engine</h3>
+                        </div>
+                        <div class="feature-content">
+                            <p>Hidden operations and process concealment</p>
+                            <div class="feature-tags">
+                                <span class="tag">Process Hiding</span>
+                                <span class="tag">Memory Protection</span>
+                                <span class="tag">Network Stealth</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Results Panel -->
+        <div class="results-panel" id="results-panel">
+            <div class="results-header">
+                <h3>Results</h3>
+                <button class="btn btn-sm" onclick="clearResults()">
+                    <i class="fas fa-trash"></i> Clear
+                </button>
+            </div>
+            <div class="results-content" id="results-content">
+                <div class="no-results">
+                    <i class="fas fa-info-circle"></i>
+                    <p>Results will appear here after running operations</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-spinner">
+            <i class="fas fa-shield-alt fa-spin"></i>
+            <p>Processing...</p>
+        </div>
+    </div>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>

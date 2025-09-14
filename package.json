@@ -4,13 +4,25 @@
   "description": "Complete Standalone Security Platform - 110+ Security Features with Enterprise-Level Capabilities",
   "main": "rawrz-standalone.js",
   "scripts": {
-    "start": "node rawrz-standalone.js",
+    "start": "node server.js",
+    "dev": "node server.js",
+    "cli": "node rawrz-standalone.js",
     "help": "node rawrz-standalone.js help",
     "test": "node rawrz-standalone.js sysinfo"
   },
   "dependencies": {
     "crc32": "^0.2.2",
-    "dotenv": "^16.3.1"
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "express-rate-limit": "^7.1.5",
+    "multer": "^1.4.5-lts.1",
+    "socket.io": "^4.7.4",
+    "uuid": "^9.0.1",
+    "bcrypt": "^5.1.1",
+    "jsonwebtoken": "^9.0.2",
+    "express-validator": "^7.0.1"
   },
   "keywords": [
     "security",
