@@ -3,7 +3,7 @@ services:
 - name: rawrz-web-app
   source_dir: /
   github:
-    repo: your-username/rawrz-security-platform
+    repo: ItsMehRAWRXD/rawrz-security-platform
     branch: main
   run_command: npm start
   environment_slug: node-js
