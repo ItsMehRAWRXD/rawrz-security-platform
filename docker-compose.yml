@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  rawrz-platform:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rawrz-security-platform
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - LOG_LEVEL=info
+    volumes:
+      # Persist data directories
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./uploads:/app/uploads
+    ports:
+      - "3000:3000"
+    networks:
+      - rawrz-network
+    # Resource limits for security
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '0.5'
+        reservations:
+          memory: 256M
+          cpus: '0.25'
+    # Security options
+    security_opt:
+      - no-new-privileges:true
+    read_only: false
+    tmpfs:
+      - /tmp:noexec,nosuid,size=100m
+    healthcheck:
+      test: ["CMD", "node", "rawrz-standalone.js", "sysinfo"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  rawrz-network:
+    driver: bridge
+    
+volumes:
+  rawrz-data:
+    driver: local
+  rawrz-logs:
+    driver: local
