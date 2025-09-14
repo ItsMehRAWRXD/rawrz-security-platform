@@ -1,0 +1,10 @@
+{
+  "metadata": {
+    "algorithm": "chacha20",
+    "key": "f8920df7e33bc79a84b0547e7992732953d6ebc52f6b535fb0b41f02f78fba5b",
+    "iv": "a7fdc3c1c11626884f58d165fdbd26c5",
+    "timestamp": "2025-09-14T17:29:48.083Z",
+    "originalSize": 48
+  },
+  "data": "ZOJ0ZpH0GKjzaiWqBaIx2s7dR/wZAWg1QWj5TneBPqzosRblCaFSR8BG74RIJpy5"
+}
