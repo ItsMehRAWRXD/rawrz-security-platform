@@ -86,20 +86,26 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>File</label>
-                                <input type="file" id="encrypt-file" accept="*/*">
+                                <label>File (supports .exe, .dll, .bin, and all file types)</label>
+                                <input type="file" id="encrypt-file" accept="*">
                             </div>
                             <div class="form-group">
-                                <label>Extension</label>
+                                <label>Output Extension</label>
                                 <select id="encrypt-extension">
                                     <option value=".enc">.enc (Standard)</option>
                                     <option value=".stub">.stub (Stub)</option>
                                     <option value=".poly">.poly (Polymorphic)</option>
                                     <option value=".anti">.anti (Anti-Analysis)</option>
                                     <option value=".mutex">.mutex (Mutex)</option>
-                                    <option value=".upx">.upx (UPX)</option>
+                                    <option value=".upx">.upx (UPX Packed)</option>
                                     <option value=".packed">.packed (Packed)</option>
                                     <option value=".hybrid">.hybrid (Hybrid)</option>
+                                    <option value=".exe">.exe (Executable)</option>
+                                    <option value=".dll">.dll (Library)</option>
+                                    <option value=".bin">.bin (Binary)</option>
+                                    <option value=".dat">.dat (Data)</option>
+                                    <option value=".crypt">.crypt (Encrypted)</option>
+                                    <option value=".secure">.secure (Secure)</option>
                                 </select>
                             </div>
                             <button class="btn btn-primary" onclick="encryptFile()">
@@ -146,8 +152,8 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>File</label>
-                                <input type="file" id="advanced-file" accept="*/*">
+                                <label>File (supports .exe, .dll, .bin, and all file types)</label>
+                                <input type="file" id="advanced-file" accept="*">
                             </div>
                             <button class="btn btn-primary" onclick="advancedCrypto()">
                                 <i class="fas fa-rocket"></i> Advanced Crypto
@@ -196,8 +202,8 @@
                         </div>
                         <div class="feature-content">
                             <div class="form-group">
-                                <label>File to Analyze</label>
-                                <input type="file" id="analyze-file" accept="*/*">
+                                <label>File to Analyze (supports .exe, .dll, .bin, and all file types)</label>
+                                <input type="file" id="analyze-file" accept="*">
                             </div>
                             <button class="btn btn-primary" onclick="analyzeFile()">
                                 <i class="fas fa-search"></i> Analyze File
@@ -232,8 +238,8 @@
                                 <textarea id="hash-text" placeholder="Enter text to hash..."></textarea>
                             </div>
                             <div class="form-group" id="hash-file-group" style="display:none;">
-                                <label>File to Hash</label>
-                                <input type="file" id="hash-file" accept="*/*">
+                                <label>File to Hash (supports .exe, .dll, .bin, and all file types)</label>
+                                <input type="file" id="hash-file" accept="*">
                             </div>
                             <button class="btn btn-primary" onclick="generateHash()">
                                 <i class="fas fa-hashtag"></i> Generate Hash

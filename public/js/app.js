@@ -150,34 +150,52 @@ const app = new RawrZApp();
 
 // Encryption Functions
 async function encryptFile() {
+    console.log('🔒 Encrypt File button clicked');
+    
     const algorithm = document.getElementById('encrypt-algorithm').value;
     const fileInput = document.getElementById('encrypt-file');
     const extension = document.getElementById('encrypt-extension').value;
+    
+    console.log('Selected algorithm:', algorithm);
+    console.log('Selected extension:', extension);
+    console.log('File input:', fileInput.files[0]);
     
     if (!fileInput.files[0]) {
         alert('Please select a file to encrypt');
         return;
     }
     
+    const file = fileInput.files[0];
+    console.log('File details:', {
+        name: file.name,
+        size: file.size,
+        type: file.type
+    });
+    
     const formData = new FormData();
-    formData.append('file', fileInput.files[0]);
+    formData.append('file', file);
     formData.append('algorithm', algorithm);
     formData.append('extension', extension);
     
     try {
+        console.log('Sending encryption request...');
         const result = await app.makeRequest('/encrypt', formData, true);
+        console.log('Encryption result:', result);
         
         if (result.success) {
             app.addResult('File Encryption', 
                 `✅ File encrypted successfully!\n` +
-                `Algorithm: ${result.algorithm}\n` +
-                `Extension: ${result.extension}\n` +
-                `Output: ${result.output || 'Encryption completed'}`
+                `Original File: ${file.name}\n` +
+                `Algorithm: ${result.algorithm || algorithm}\n` +
+                `Output Extension: ${result.extension || extension}\n` +
+                `Encrypted File: ${result.encryptedFile || 'Generated'}\n` +
+                `Details: ${result.output || 'Encryption completed'}`
             );
         } else {
-            app.addResult('File Encryption Error', `❌ ${result.error}`, false);
+            app.addResult('File Encryption Error', `❌ ${result.error || 'Unknown error'}`, false);
         }
     } catch (error) {
+        console.error('Encryption error:', error);
         app.addResult('File Encryption Error', `❌ ${error.message}`, false);
     }
 }
