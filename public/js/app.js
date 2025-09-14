@@ -128,12 +128,18 @@ class RawrZApp {
             }
             
             const response = await fetch(`${this.baseURL}/api${endpoint}`, options);
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
             const result = await response.json();
             
             this.hideLoading();
             return result;
         } catch (error) {
             this.hideLoading();
+            console.error('Request failed:', error);
             throw error;
         }
     }
